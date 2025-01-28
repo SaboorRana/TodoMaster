@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Search Todos {% endblock title %}
+{% block body %}
+<div class="container my-3">
+    {% if todos %}
+    <h3>Searched Todo</h3>
+        {% for todo in todos %}
+        <div class="mb-3">
+            <h3>{{loop.index}}#</h3>
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" id="title" value="{{ todo.title }}" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <input type="text" class="form-control" name="desc" id="desc" value="{{ todo.desc }}">
+        </div>
+
+        {% endfor %}
+    {% else %}
+        <p>No results found</p>
+    {% endif %}
+    <a href="/" class="btn btn-outline-dark mt-3">Go Back</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+{% endblock body %}
